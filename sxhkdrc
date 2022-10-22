@@ -1,0 +1,133 @@
+# Reload functions
+#super + Escape
+#	"$XDG_CONFIG_HOME"/sxhkd/functions
+
+# terminal emulator
+#super + Return
+#        st
+
+#dmenu
+#super + @space 
+#	dmenu_run
+
+# reload sxhkd conf file
+#super + r 
+#	pkill -USR1 -x sxhkd
+
+# reload bspwm conf
+#super + shift + r
+#	~/.config/bspwm/bspwmrc
+
+# restart bspwm
+#super + shift + q
+# 	bspc {quit}
+
+# close and kill
+#super + q
+#       	bspc node -{c,k}
+
+# Toggle full screen 
+#super + f 
+#	bspc node --state \~fullscreen
+
+# switch between tiled and monocle layout
+#super + m
+#	bspc node -s biggest.local
+
+# floating
+#super + shift + f
+#	bspc node -t {floating,tiled}
+
+# Toggle pseudo tilling window
+#super + t
+#	bspc node --state \~pseudo_tiled
+
+# volume manager
+super + v 
+	pavucontrol 
+
+# focus next window
+#super + {_,shift + }n
+#	bspc node -f {next,prev}.local.!hidden.window
+
+# Next workspace
+#super + 2
+#	bspc desktop --focus II
+#
+#super + 3
+#	bspc desktop --focus III
+
+#super + 4
+#	bspc desktop --focus IV
+#
+#super + 5
+#	bspc desktop --focus V
+# previous workspace 
+#super + 1
+#	bspc desktop --focus I
+
+
+# expand window by left outside
+#super + alt + { h }
+#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+#super + alt + {h,j,k,l}
+#  bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+#contract 
+#super + alt + l
+#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+#super + alt + shift + {h,j,k,l}
+#  bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+
+
+# screenshot 
+@Print 
+	maim --select | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/png
+#scrot -s --line mode=edge ~/pix/Screenshots/%Y-%m-%d_%H:%M:%S-scrot.png
+
+# full screen shot
+super + @Print
+	maim | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg
+#scrot -d1 && mv *.png ~/pix/Screenshots/
+
+#Volume Control
+super + Down
+	amixer set Master 5%-
+super + Up
+	amixer set Master 5%+
+super + shift + minus
+        pactl set-sink-mute 0 toggle
+
+
+# move focused window to the next workspace and then switch to that workspace
+#alt + shift + {Left,Right}
+#    id=$(bspc query --nodes --node); bspc node --to-desktop {prev,next}; bspc desktop --focus next; bspc node --focus ${id}
+
+
+# toggle polybar
+#super + b
+#     {polybar-msg cmd hide; bspc config -m focused top_padding 0, polybar-msg cmd show; bspc config -m focused top_padding 40}
+
+
+
+# Send the window to another edge of the screen
+#super + {_,shift + }{Left,Down,Up,Right}
+#	bspc node -{f,s} {west,south,north,east}
+
+
+# Set the node flags
+#super + ctrl + {m,x,y,z}
+#	bspc node -g {marked,locked,sticky,private}
+
+## Shrinking windows
+#super + alt + {Left,Right,Up,Down}
+#	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+
+
+# change to horizontal
+#super + c
+#	bspc node @parent -R 90
+
+
+
