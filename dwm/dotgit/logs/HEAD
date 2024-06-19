@@ -1,0 +1,9 @@
+0000000000000000000000000000000000000000 a264f3b1ef8a576a6e4d9974df663df6352db1d0 stroky <stroky@artixd.localdomain> 1699099330 +0530	clone: from https://github.com/bugswriter/dwm
+a264f3b1ef8a576a6e4d9974df663df6352db1d0 7501f8903f6cc872395f11bef32d03c17c2fa9f7 Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1700054215 +0530	commit: stable config. before patching.
+7501f8903f6cc872395f11bef32d03c17c2fa9f7 83dca498b1a92094a00790e7ac9be6a88610019c Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1700056636 +0530	commit: Applied scratchpads patch 󰩐
+83dca498b1a92094a00790e7ac9be6a88610019c e2d2cf052be97b42534f3023a29e16b79632e46f Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1700056770 +0530	commit: Applied pertag patch 󰩐
+e2d2cf052be97b42534f3023a29e16b79632e46f f3ba25dcc45aaaddca3d3e8a7e8b5585f307b90b Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1700057206 +0530	commit: Applied movestack patch 󰩐
+f3ba25dcc45aaaddca3d3e8a7e8b5585f307b90b 239fd01d300494fc070da6d78aa799677cc686e8 Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1700058723 +0530	commit: Applied systray patch 󰩐
+239fd01d300494fc070da6d78aa799677cc686e8 15de77bcb40ace0cc3077261039631d4434fc79e Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1702390681 +0530	commit: Fixed window resize with left click.
+15de77bcb40ace0cc3077261039631d4434fc79e 999a0c3851ffc36cbe2a51455f196f8787e80549 Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1703058119 +0530	commit: Successfully patched with actualfullscreen
+999a0c3851ffc36cbe2a51455f196f8787e80549 0edb7fd3d7263abaf3ccf8080581e77257aa79fb Dark-Kernel <Mr.SimpleEditor@protonmail.com> 1718809187 +0530	commit: updated keybinds for togglefloating & quit
