@@ -7,3 +7,5 @@ f3ba25dcc45aaaddca3d3e8a7e8b5585f307b90b 239fd01d300494fc070da6d78aa799677cc686e
 239fd01d300494fc070da6d78aa799677cc686e8 15de77bcb40ace0cc3077261039631d4434fc79e Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1702390681 +0530	commit: Fixed window resize with left click.
 15de77bcb40ace0cc3077261039631d4434fc79e 999a0c3851ffc36cbe2a51455f196f8787e80549 Dark-Kernel <Mr-SimpleEditor@protonmail.com> 1703058119 +0530	commit: Successfully patched with actualfullscreen
 999a0c3851ffc36cbe2a51455f196f8787e80549 0edb7fd3d7263abaf3ccf8080581e77257aa79fb Dark-Kernel <Mr.SimpleEditor@protonmail.com> 1718809187 +0530	commit: updated keybinds for togglefloating & quit
+0edb7fd3d7263abaf3ccf8080581e77257aa79fb 7c76d5874268f7a9542c54644d1b4dfecf5c0c59 Dark-Kernel <Mr.SimpleEditor@protonmail.com> 1729522079 +0530	commit: Applied statuscmd patch 󰩐
+7c76d5874268f7a9542c54644d1b4dfecf5c0c59 c6c95c3617310dd76e65de64c368737636aa052d Dark-Kernel <Mr.SimpleEditor@protonmail.com> 1731070862 +0530	commit: Added mouse scroll buttons 4,5 & misc

@@ -1,0 +1,61 @@
+#!/bin/bash
+
+
+time_to_seconds() {
+    local time_str=$1
+    local seconds=0
+    local parts=()
+
+    # Split the time string into an array by ":"
+    IFS=":" read -r -a parts <<< "$time_str"
+
+    # Calculate total seconds based on the number of parts
+    if [ ${#parts[@]} -eq 3 ]; then
+        # HH:MM:SS format
+        seconds=$((10#${parts[0]} * 3600 + 10#${parts[1]} * 60 + 10#${parts[2]}))
+    elif [ ${#parts[@]} -eq 2 ]; then
+        # MM:SS format
+        seconds=$((10#${parts[0]} * 60 + 10#${parts[1]}))
+    fi
+
+    echo "$seconds"
+}
+
+# Get current position and total duration
+position=$(playerctl metadata --format '{{ duration(position) }}')
+length=$(playerctl metadata --format '{{ duration(mpris:length) }}')
+
+# Convert to total seconds
+pos_seconds=$(time_to_seconds "$position")
+len_seconds=$(time_to_seconds "$length")
+
+# Calculate percentage
+if [ "$len_seconds" -gt 0 ]; then
+    percent=$((pos_seconds * 100 / len_seconds))
+else
+    percent=0
+fi
+
+# Send the notification with progress
+info(){
+    notify-send -a "$(playerctl metadata --format '{{ playerName }}' | sed 's/./\u&/')" \
+        "$(playerctl metadata --format '{{ artist }} - {{ title }}')" \
+        "$(playerctl metadata --format '{{ duration(position) }}|{{ duration(mpris:length)}}')" \
+        -i /usr/share/icons/Dracula/apps/scalable/music_icon-24.svg \
+        -h int:value:$percent -h string:x-canonical-private-synchronous:music
+}
+
+case "$BLOCK_BUTTON" in
+    1) playerctl play-pause ;;
+    2) info ;;
+    3) alacritty -e "$EDITOR" "$0" ;;
+    4) playerctl position 10+ ;;
+    5) playerctl position 10- ;;
+esac
+
+if [[ "$(playerctl status)" == "Playing" ]]; then
+    echo ""
+elif [[ "$(playerctl status)" == "Paused" ]]; then
+    echo ""
+fi
+

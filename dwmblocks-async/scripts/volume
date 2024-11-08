@@ -1,0 +1,55 @@
+#!/bin/sh
+# Display volume levels.
+
+volup()(
+    /bin/sh -c "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && pkill -SIGUSR1 dwmblocks"
+)
+voldown()(
+    /bin/sh -c "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && pkill -SIGUSR1 dwmblocks"
+)
+
+wpctl() {
+    arg="$2"
+
+    set -- "$1"
+    if [ "$1" = set-volume ]; then
+        set -- "$@" --limit=1.0
+    fi
+
+    set -- "$@" @DEFAULT_AUDIO_SINK@ "$arg"
+
+    command wpctl "$@"
+}
+
+case "$BLOCK_BUTTON" in
+    1) setsid --fork alacritty -e pulsemixer ;;
+    2) wpctl set-mute toggle ;;
+    3) alacritty -e "$EDITOR" "$0" ;;
+    4) volup ;;
+    5) voldown ;;
+esac
+# 4) wpctl set-volume 3%+ ;;
+# 4) wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && pkill -SIGUSR1 dwmblocks ;;
+
+# . sb-theme
+if wpctl get-volume | grep -q "[MUTED]"; then
+    echo " "
+    exit
+fi
+
+volume_frac="$(wpctl get-volume | cut -d' ' -f2)"
+volume="$(echo "$volume_frac * 100 / 1" | bc)"
+
+if [ -z "$volume" ]; then
+    exit 1
+fi
+
+if [ "$volume" -gt 40 ]; then
+    icon=" "
+elif [ "$volume" -gt 15 ]; then
+    icon=" "
+else
+    icon=" "
+fi
+
+echo "$icon$volume%"
