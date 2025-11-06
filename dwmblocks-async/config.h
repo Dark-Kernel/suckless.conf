@@ -19,7 +19,7 @@
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X)             \
     X(" ", "music-status", 1, 6) \
-    X("", "volume", 0, 2)   \
+    X(" ", "volume", 0, 2)   \
     X("", "clock", 1, 10)    
 #endif  // CONFIG_H
 
